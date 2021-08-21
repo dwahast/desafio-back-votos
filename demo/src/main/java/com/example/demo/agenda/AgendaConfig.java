@@ -13,11 +13,11 @@ public class AgendaConfig {
     @Bean
     CommandLineRunner commandLineRunner(AgendaRepository repository) {
         return args -> {
-            Agenda nome = new Agenda("Mudar nome da empresa");
+//            Agenda nome = new Agenda("Mudar nome da empresa");
 
 //            Agenda predio = new Agenda("Escolher um predio");
 
-            repository.saveAll(List.of(nome));
+//            repository.saveAll(List.of(nome));
         };
     }
 }

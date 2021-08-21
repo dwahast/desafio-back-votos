@@ -1,12 +1,15 @@
 package com.example.demo.agenda;
 
+import com.example.demo.Partner.Partner;
+import com.example.demo.utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/agenda")
+@RequestMapping(path = "api/v1/agenda", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AgendaController {
 
     private final AgendaService agendaService;
@@ -26,18 +29,20 @@ public class AgendaController {
         return agendaService.addNewAgenda(agenda.getDescription());
     }
 
-    // TODO: adicionar voto em uma pauta
     @PutMapping(path = "{agendaId}/yes")
-    public void registerNewYesVote(@PathVariable("agendaId") Long agendaId){
+    public Response registerNewYesVote(@PathVariable("agendaId") Long agendaId){
         agendaService.addNewYesVote(agendaId);
-        // TODO: Retornar agenda.
+
+        return new Response("Voto registrado com sucesso", 0);
+//        return new Response("Voto registrado com sucesso");
     }
 
     // TODO: adicionar voto em uma pauta @RequestBody Partner partner
     @PutMapping(path = "{agendaId}/no")
-    public void registerNewNoVote(@PathVariable("agendaId") Long agendaId){
+    public Response registerNewNoVote(@PathVariable("agendaId") Long agendaId, @RequestBody Partner partner){
         agendaService.addNewNoVote(agendaId);
-        // TODO: Retornar agenda.
+        return new Response("Voto registrado com sucesso", 0);
+
     }
 
 //
