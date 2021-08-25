@@ -35,7 +35,6 @@ public class AgendaController {
         return new Response("Voto registrado com sucesso", 0);
     }
 
-    // TODO: adicionar voto em uma pauta @RequestBody Partner partner
     @PutMapping(path = "{agendaId}/no")
     public Response registerNewNoVote(@PathVariable("agendaId") Long agendaId, @RequestBody Partner partner){
         agendaService.addNewNoVote(agendaId, partner);
