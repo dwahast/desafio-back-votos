@@ -41,7 +41,7 @@ public class Partner {
     }
 
     public String getFullName() {
-        return fullName;
+        return firstName + " " + lastName;
     }
 
     public Long getDocId() {
