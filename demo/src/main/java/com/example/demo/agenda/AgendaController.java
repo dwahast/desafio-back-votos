@@ -30,17 +30,15 @@ public class AgendaController {
     }
 
     @PutMapping(path = "{agendaId}/yes")
-    public Response registerNewYesVote(@PathVariable("agendaId") Long agendaId){
-        agendaService.addNewYesVote(agendaId);
-
+    public Response registerNewYesVote(@PathVariable("agendaId") Long agendaId, @RequestBody Partner partner){
+        agendaService.addNewYesVote(agendaId, partner);
         return new Response("Voto registrado com sucesso", 0);
-//        return new Response("Voto registrado com sucesso");
     }
 
     // TODO: adicionar voto em uma pauta @RequestBody Partner partner
     @PutMapping(path = "{agendaId}/no")
     public Response registerNewNoVote(@PathVariable("agendaId") Long agendaId, @RequestBody Partner partner){
-        agendaService.addNewNoVote(agendaId);
+        agendaService.addNewNoVote(agendaId, partner);
         return new Response("Voto registrado com sucesso", 0);
 
     }
