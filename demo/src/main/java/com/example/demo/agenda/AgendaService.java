@@ -36,6 +36,11 @@ public class AgendaService {
         Agenda agenda = agendaRepository.findById(agendaId)
                 .orElseThrow(() -> new IllegalStateException("agenda with id " + agendaId + " not exists"));
 
+        System.out.println("Closed:" + agenda.getClosed().toString());
+        if (agenda.getClosed()) {
+            throw new IllegalStateException("agenda with id " + agendaId + " is closed");
+        }
+
         Partner partnerObj = partnerRepository.findById(partner.getId())
                 .orElseThrow(() -> new IllegalStateException("partner with id " + partner.getId() + " not exists"));
 
@@ -53,6 +58,11 @@ public class AgendaService {
     public void addNewNoVote(Long agendaId, Partner partner) {
         Agenda agenda = agendaRepository.findById(agendaId)
                 .orElseThrow(() -> new IllegalStateException("agenda with id " + agendaId + " not exists"));
+
+        System.out.println("Closed:" + agenda.getClosed().toString());
+        if (agenda.getClosed()) {
+            throw new IllegalStateException("agenda with id " + agendaId + " is closed");
+        }
 
         Partner partnerObj = partnerRepository.findById(partner.getId())
                 .orElseThrow(() -> new IllegalStateException("partner with id " + partner.getId() + " not exists"));
